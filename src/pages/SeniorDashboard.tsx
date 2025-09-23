@@ -10,15 +10,30 @@ import {
   Home,
   Smartphone,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RequestDetailsDialogSenior from "@/components/RequestDetailsDialogSenior";
 import RequestHelpDialog from "@/components/RequestHelpDialog";
 import RequestOtherHelpDialog from "@/components/RequestOtherHelpDialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const SeniorDashboard = () => {
   const [showRequestDialog, setShowRequestDialog] = useState(false);
   const [showOtherRequestDialog, setShowOtherRequestDialog] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState<any>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    const hasSeen = localStorage.getItem("senior_onboarding_shown");
+    if (!hasSeen) {
+      setShowOnboarding(true);
+      localStorage.setItem("senior_onboarding_shown", "true");
+    }
+  }, []);
 
   const frequentRequests = [
     {
@@ -125,7 +140,7 @@ const SeniorDashboard = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader>
             <CardTitle className="senior-heading">Help Requested</CardTitle>
@@ -241,6 +256,56 @@ const SeniorDashboard = () => {
         open={showOtherRequestDialog}
         onOpenChange={setShowOtherRequestDialog}
       />
+
+      <Dialog open={showOnboarding} onOpenChange={setShowOnboarding}>
+  <DialogContent className="max-w-[23rem] rounded-lg" hideClose>
+          <DialogHeader>
+            <DialogTitle className="senior-heading text-center">
+              Welcome! <p className="pt-4"> Here&apos;s how to use the app</p>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 senior-text">
+            <div>
+              <div className="font-semibold mb-2">✅ How to Request Help</div>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                <li>Tap Request Help and fill in the task details</li>
+                <li>
+                  Or choose from the suggested help list (e.g., groceries,
+                  appointments, home help)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div className="font-semibold mb-2">
+                📥 What Happens After Requesting
+              </div>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                <li>
+                  Your request appears on the Home screen under “Recent
+                  Requests”
+                </li>
+                <li>Status starts as Pending</li>
+                <li>When a helper accepts, it updates to Accepted</li>
+              </ul>
+            </div>
+            <div>
+              <div className="font-semibold mb-2">🔍 How to View Status</div>
+              <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                <li>Tap any request to see full details</li>
+                <li>You&apos;ll see the task, time, location, and who accepted</li>
+              </ul>
+            </div>
+            <div className="pt-2">
+              <Button
+                className="w-full senior-button gradient-primary hover:opacity-90"
+                onClick={() => setShowOnboarding(false)}
+              >
+                Got it
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
