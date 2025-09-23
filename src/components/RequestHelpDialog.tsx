@@ -38,7 +38,7 @@ const RequestHelpDialog = ({ open, onOpenChange }: RequestHelpDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-[23rem] rounded-lg">
         <DialogHeader>
           <DialogTitle className="senior-heading text-center">Help Request</DialogTitle>
           <p className="senior-text text-muted-foreground text-center">

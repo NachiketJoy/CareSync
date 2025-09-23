@@ -27,7 +27,7 @@ const RequestDetailsDialogSenior = ({ request, open, onOpenChange }: RequestDeta
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[23rem]">
+      <DialogContent className="max-w-[23rem] rounded-lg">
         <DialogHeader>
           <DialogTitle className="senior-heading text-center text-primary">
             Help Request
