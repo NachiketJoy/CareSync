@@ -1,4 +1,4 @@
-# 🩺 CareSync — Health Coordination App for Seniors & Caregivers
+# 🩺 CareSync - Health Coordination App for Seniors & Caregivers
 
 CareSync is a mobile app that helps seniors and caregivers manage daily support, request help, and access emergency services.
 
