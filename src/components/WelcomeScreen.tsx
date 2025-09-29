@@ -19,7 +19,8 @@ const WelcomeScreen = () => {
             </h1>
           </div>
           <p className="senior-text text-muted-foreground text-center max-w-sm mx-auto">
-            Connecting seniors with caring helpers in your community
+            {/* Connecting seniors with caring helpers in your community */}
+            Where Compassion Meets Innovation
           </p>
         </div>
 

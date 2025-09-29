@@ -81,9 +81,9 @@ const Register = () => {
         <div className="w-full max-w-md">
           <Card className="border-2">
             <CardHeader className="text-center">
-              <CardTitle className="senior-heading">
+              {/* <CardTitle className="senior-heading">
                 {role === "senior" ? "Join CareSync" : "Become a Helper"}
-              </CardTitle>
+              </CardTitle> */}
               <p className="senior-text text-muted-foreground">
                 {role === "senior"
                   ? "Get the help you need from caring neighbors"
